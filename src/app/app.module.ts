@@ -4,8 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsListComponent } from './components/items-list/items-list.component';
-import {HttpClientModule }from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http' //for HTTP Client
 import { ItemService } from '../app/services/item.service'
+import { MatTableModule } from '@angular/material/table'  
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +16,11 @@ import { ItemService } from '../app/services/item.service'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

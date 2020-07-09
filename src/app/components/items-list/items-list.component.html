@@ -1,1 +1,22 @@
-<p>items-list works!</p>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>SN</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let temp of items">
+            <td>{{temp.title}}</td>
+            <td>{{temp.price}}</td>
+            <td>{{temp.serialNumber}}</td>
+        </tr>
+    </tbody>
+ 
+</table>
+
+
+  
+  
