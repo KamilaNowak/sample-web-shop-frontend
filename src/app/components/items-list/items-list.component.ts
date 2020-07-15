@@ -5,7 +5,7 @@ import { Item } from 'src/app/utils/item';
 
 @Component({
   selector: 'app-items-list',
-  templateUrl: './items-list.component.html',
+  templateUrl: './items-list.component-content.html',
   styleUrls: ['./items-list.component.css']
 })
 export class ItemsListComponent implements OnInit {

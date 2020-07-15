@@ -1,4 +1,128 @@
-/* You can add global styles to this file, and also import other style files */
+ *{
+    margin: 10;
+    padding:5;
+    box-sizing:border-box
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body{
+    font-family: Verdana, Geneva, Tahoma,sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.800;
+    color:rgb(12, 10, 10);
+}
+
+.page-wrapper{
+    overflow: hidden;
+    background:#eeeaea;
+    padding-bottom: 10vh
+}
+.menu-bar{
+    width: 200px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background:#ffffff;
+    overflow-y: auto
+
+}
+.menu-bar-content{
+    position: relative;
+}
+.navbar-menu{
+    padding:40px;
+    padding-bottom:0
+}
+.navbar-menu .navbar-list li a{
+    display: block;
+    color:rgb(39, 37, 37);
+    font: size 20px;;
+    padding: 6px 0
+}
+
+.navbar-menu .navbar-list li a i{
+    margin-right:20px
+}
+
+.navbar-menu .navbar-list li a:hover{
+    color:#e0abab
+}
+.page-container{
+    background:#fdf7f7;
+    padding-left: 200px
+}
+.header{
+    background:#c698d4;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
+    position:fixed;
+    top: 0;
+    right: 0;
+    left: 200px;
+    height: 80px;
+}
+.header-content{
+    overflow:visible;
+    position:absolute;
+    top:50%;
+    left:0;
+    right:0;
+    -webkit-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    transform:translateY(-50%)
+}
+.header-wrapper{
+    display: flex;
+    align-items:center;
+    justify-content:space-between
+}
+
+.header-input-xl{
+    min-width: 940px;
+}
+
+input.header-input.header-input-xl{
+    border-radius:40px!important;
+    margin-right:15px
+}
+.form-header{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex
+}
+.header-button-submit{
+    position:relative;
+    right:0;
+    min-width:95px;
+    color:#fff;
+    border:1px solid #570f36;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:43px;
+    background:#8d205c
+}
+.cart-sign{
+    display:block
+}
+.total-sign{
+    background:#8d205c;
+    line-height:45px;
+    color: #fff;
+    border-radius: 30px;
+    border: 1px solid #570f36;
+    float: left;
+    margin-top: 7px;
+    padding-left: 17px
+}
+.total-sign span{
+    display: inline-block;
+    background:#fff;
+    padding: 0 13px;
+    color:#000;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 10px
+}
