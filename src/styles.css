@@ -126,3 +126,47 @@ input.header-input.header-input-xl{
     border-bottom-right-radius: 20px;
     margin-left: 10px
 }
+.main-content{
+    padding-top:116px;
+    min-height:100vh
+}
+.item-area-content{
+    margin-bottom:60px
+}
+.item-area-content{
+    width: 150px;
+}
+.price-label{
+    margin:20px 0 0;
+    font-weight:1000;
+    color:#400a47
+}
+footer ul li a{
+    color:#fff
+}
+
+footer{
+    background:#232324;
+    z-index:1;
+    position:relative;
+    text-align:center
+}
+footer li a{
+    color:#313131;
+    font-weight:500
+}
+footer ul li{
+    display:inline-block;
+    font-size:14px;
+    padding:10px 20px
+}
+.img-responsive{
+  width: 200px;
+}
+.page-number{
+    padding:6px 0;
+    margin-bottom: 2px;
+}
+.section-content-p35{
+    padding:0 35px
+}

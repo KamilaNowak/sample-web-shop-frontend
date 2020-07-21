@@ -13,7 +13,7 @@
            <div class="menu-bar d-none d-lg-block">
                <div class="logo-bar">
                    <a href="home.html">
-                       <img src="../assets/images/logo-2.png" style="width: 90%;" alt="Shople" class="img-responsive"/>
+                       <img src="../assets/images/logo-2.png" style="width: 40%;" alt="Shople" class="img-responsive"/>
                    </a>
                </div>
 
@@ -33,31 +33,42 @@
                    </div>
                 </nav>
            </div>
+        <div class="page-container">
+                <header class="header">
+                    <div class="header-content section-content-p35">
+                        <div class="container-fluid">
+                            <div class="header-wrapper">
+                                <form class="form-header" onsubmit="return false;" method="GET">
+                                    <input class="header-input header-input-xl" type="text" name="search-bar"/>
+                                    <button class="header-button-submit" type="submit"> Search </button>
+                                </form>
 
-       </div class="page-container">
-            <header class="header">
-                <div class="header-content">
-                    <div class="container-fluid">
-                        <div class="header-wrapper">
-                            <form class="form-header" onsubmit="return false;" method="GET">
-                                <input class="header-input header-input-xl" type="text" name="search-bar"/>
-                                <button class="header-button-submit" type="submit"> Search </button>
-                            </form>
-
-                            <div class="cart-sign d-n">
-                                <a href="cart-details.html">
-                                    <div class="total-sign">
-                                        PRICE 
-                                        <span>COUNT</span>
-                                    </div>
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                </a>
+                                <div class="cart-sign d-n">
+                                    <a href="cart-details.html">
+                                        <div class="total-sign">
+                                            PRICE 
+                                            <span>COUNT</span>
+                                        </div>
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </header>
+                </header>
+        </div>
+        <app-items-list></app-items-list>
+    
        </div>
+       <footer>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact </a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Regulations</a></li>
+        </ul>
+    </footer>
     </body>    
     </html>
 
