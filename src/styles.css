@@ -170,3 +170,7 @@ footer ul li{
 .section-content-p35{
     padding:0 35px
 }
+.path-active{
+    font-weight: bold;
+    font-family: serif;
+}

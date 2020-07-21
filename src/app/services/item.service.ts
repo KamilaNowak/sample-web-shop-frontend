@@ -17,7 +17,7 @@ export class ItemService {
 
    }
 
-  getItems(): Observable<Item[]>{
+  getItems(categoryId: number): Observable<Item[]>{
      return this.httpClient
       .get<UnwrapEmbedded>(this.url)
       .pipe( map( res => res._embedded.items)
