@@ -7,7 +7,8 @@ import { ItemsListComponent } from './components/items-list/items-list.component
 import { HttpClientModule } from '@angular/common/http' //for HTTP Client
 import { ItemService } from '../app/services/item.service'
 import { MatTableModule } from '@angular/material/table'  
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule } from '@angular/router';
+import { ItemCategoryBarComponent } from './components/item-category-bar/item-category-bar.component'
 
 const routes : Routes= [
   {path: 'category/:id', component: ItemsListComponent},
@@ -21,7 +22,8 @@ const routes : Routes= [
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsListComponent
+    ItemsListComponent,
+    ItemCategoryBarComponent
   ],
   imports: [
     BrowserModule,

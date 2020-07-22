@@ -1,0 +1,9 @@
+<nav class="menu-bar-content">
+    <div class="navbar-menu">
+     <ul class="list-unstyled navbar-list">
+         <li *ngFor="let tmp of itemCategoryList">
+             <a routerLink="/category/{tmp.id}" routerLinkActive="path-active">{{tmp.category}}</a>
+         </li>
+     </ul>
+    </div>
+ </nav>

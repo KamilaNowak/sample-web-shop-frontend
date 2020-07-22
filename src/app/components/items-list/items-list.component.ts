@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ItemsListComponent implements OnInit {
 
   items: Item[];
-  categoryId: number;
+  categoryId:number;
+  
   private
   constructor(private itemService: ItemService, private route: ActivatedRoute) { }
 
@@ -32,7 +33,7 @@ export class ItemsListComponent implements OnInit {
       this.categoryId = 1;
     }
     this.itemService
-        .getItems(this.categoryId)
+        .getItemList(this.categoryId)
         .subscribe(response => {
             this.items = response
         })

@@ -4,6 +4,7 @@ import { Item } from '../utils/item'
 
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
+import { ItemCategory } from '../utils/item-category';
 
 
 @Injectable({
@@ -12,20 +13,37 @@ import { map } from 'rxjs/operators'
 export class ItemService {
 
   private url = 'http://localhost:8080/items'
-
   constructor(private httpClient: HttpClient) {
 
    }
 
-  getItems(categoryId: number): Observable<Item[]>{
+  getItemList(categoryId: number): Observable<Item[]>{
+
+     const filterUrl = this.url+`/search/findByItemCategory_Id?id=${categoryId}`
+
      return this.httpClient
-      .get<UnwrapEmbedded>(this.url)
+      .get<UnwrapEmbeddedItem>(filterUrl)
       .pipe( map( res => res._embedded.items)
     );
   }
+
+
+  getItemCategoryList(){
+    const categoryUrl =`http://localhost:8080/item-category`
+
+    return this.httpClient
+    .get<UnwrapEmbeddedCategory>(categoryUrl)
+    .pipe( map( res => res._embedded.categories))
+  }
 }
-interface UnwrapEmbedded{
+interface UnwrapEmbeddedItem{
   _embedded: {
     items: Item[];
   }
 }
+interface UnwrapEmbeddedCategory{
+  _embedded: {
+    categories: ItemCategory[];
+  }
+}
+
