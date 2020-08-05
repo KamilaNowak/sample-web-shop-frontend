@@ -8,9 +8,11 @@ import { HttpClientModule } from '@angular/common/http' //for HTTP Client
 import { ItemService } from '../app/services/item.service'
 import { MatTableModule } from '@angular/material/table'  
 import { Routes, RouterModule } from '@angular/router';
-import { ItemCategoryBarComponent } from './components/item-category-bar/item-category-bar.component'
+import { ItemCategoryBarComponent } from './components/item-category-bar/item-category-bar.component';
+import { SearchComponent } from './components/search/search.component'
 
 const routes : Routes= [
+  {path: 'search/:query', component: ItemsListComponent},
   {path: 'category/:id', component: ItemsListComponent},
   {path: 'category', component: ItemsListComponent},
   {path: 'items', component: ItemsListComponent},
@@ -23,7 +25,8 @@ const routes : Routes= [
   declarations: [
     AppComponent,
     ItemsListComponent,
-    ItemCategoryBarComponent
+    ItemCategoryBarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
