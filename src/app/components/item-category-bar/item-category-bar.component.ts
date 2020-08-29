@@ -17,8 +17,12 @@ export class ItemCategoryBarComponent implements OnInit {
   }
 
   getItemCategoryList(){
+
     this.itemService.getItemCategoryList().subscribe(
-      data => this.itemCategoryList = data
+      data => {
+        console.log(JSON.stringify(data))
+        this.itemCategoryList = data
+      }
     )
   }
 }

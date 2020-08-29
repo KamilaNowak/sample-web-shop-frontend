@@ -9,12 +9,14 @@ import { ItemService } from '../app/services/item.service'
 import { MatTableModule } from '@angular/material/table'  
 import { Routes, RouterModule } from '@angular/router';
 import { ItemCategoryBarComponent } from './components/item-category-bar/item-category-bar.component';
-import { SearchComponent } from './components/search/search.component'
+import { SearchComponent } from './components/search/search.component';
+import { ItemDetailsComponent } from './components/item-details/item-details.component'
 
 const routes : Routes= [
   {path: 'search/:query', component: ItemsListComponent},
   {path: 'category/:id', component: ItemsListComponent},
   {path: 'category', component: ItemsListComponent},
+  {path: 'items/:id', component: ItemDetailsComponent},
   {path: 'items', component: ItemsListComponent},
   {path: '', redirectTo:'/items', pathMatch:'full'},
   {path: '**', redirectTo:'/items', pathMatch:'full'},
@@ -26,7 +28,8 @@ const routes : Routes= [
     AppComponent,
     ItemsListComponent,
     ItemCategoryBarComponent,
-    SearchComponent
+    SearchComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,9 @@ const routes : Routes= [
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]

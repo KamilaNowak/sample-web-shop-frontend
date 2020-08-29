@@ -24,9 +24,16 @@ export class ItemService {
      return this.processItemsList(filterUrl)
   }
 
+  getItemById(itemId:number):Observable<Item>{
+    
+  
+    const itemUrl = this.url + `/search/findById?id=${itemId}`
+    return this.httpClient.get<Item>(itemUrl)
+  }
+
   searchItems(query: string): Observable<Item[]> {
 
-    const searchUrl = this.url + `search/findByTitleContaining?query=${query}`
+    const searchUrl = this.url + `/search/findByTitleContaining?query=${query}`
     return this.processItemsList(searchUrl)
   }
 
@@ -37,12 +44,16 @@ export class ItemService {
       );
   }
 
-  getItemCategoryList(){
+  getItemCategoryList():Observable<ItemCategory[]>{
     const categoryUrl = `http://localhost:8080/item-category`
-
+    
+    console.log("d " + this.httpClient
+      .get<UnwrapEmbeddedCategory>(categoryUrl)
+      .pipe( map( res => res._embedded.itemCategory)))
     return this.httpClient
-    .get<UnwrapEmbeddedCategory>(categoryUrl)
-    .pipe( map( res => res._embedded.categories))
+      .get<UnwrapEmbeddedCategory>(categoryUrl)
+      .pipe( map( res => res._embedded.itemCategory))
+  
   }
 
 }
@@ -53,7 +64,7 @@ interface UnwrapEmbeddedItem{
 }
 interface UnwrapEmbeddedCategory{
   _embedded: {
-    categories: ItemCategory[];
+    itemCategory: ItemCategory[];
   }
 }
 

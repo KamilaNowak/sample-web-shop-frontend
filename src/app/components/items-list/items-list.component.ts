@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item.service'
 import { Item } from 'src/app/utils/item';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { query } from '@angular/animations';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-items-list',
@@ -15,14 +13,20 @@ export class ItemsListComponent implements OnInit {
   items: Item[];
   categoryId:number;
   isSearchingActive: boolean
-  private
+
   constructor(private itemService: ItemService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log(this.route)
     this.route.paramMap.subscribe(() =>{
     this.getItemsList();
   });
 }
+  routerOnActivate(): void{
+    this.route.paramMap.subscribe(() =>{
+      this.getItemsList();
+    });
+  } 
   getItemsList() {
 
     this.isSearchingActive = this.route.snapshot.paramMap.has('query')
@@ -38,7 +42,6 @@ export class ItemsListComponent implements OnInit {
   }
 
   retrieveItemsList(){
-
     const categoryIdValue : boolean = this.route.snapshot.paramMap.has('id')
 
     if(categoryIdValue) {
@@ -54,7 +57,7 @@ export class ItemsListComponent implements OnInit {
         })
   }
   getSearchedItemsList(){
-    
+
     const query:string = this.route.snapshot.paramMap.get('query')
     this.itemService.searchItems(query)
       .subscribe( data => this.items=data)

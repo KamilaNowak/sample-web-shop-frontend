@@ -4,20 +4,32 @@
             <div class="row">
                 <div class="item-area-content">
                     <div *ngFor="let temp of items" class="col-md-3">
-                            <a href="product-details.html">
-                                <!-- <img src="../../../assets/images/sample.png" class="img-responsive">  -->
-                                 <img src="{{ temp.imageUrl }}" class="img-responsive">  
+                        <div class="item-grid">
+                            <a routerLink="/items/{{ temp.id }}" >
+                                <a href="product-details.html">
+                                    <!-- <img src="../../../assets/images/sample.png" class="img-responsive">  -->
+                                    <img src="{{ temp.imageUrl }}" class="img-responsive">  
+                                </a>
                             </a>
                             <br>
-                            <a href="product-details.html">
-                                <h1>{{temp.title}}</h1>
+                            <a routerLink="/items/{{ temp.id }}" >
+                                <a href="product-details.html">
+                                    <h1>{{temp.title}}</h1>
+                                </a>
                             </a>
                             <h2>{{temp.description}}</h2>
                             <div class="price-label"> {{temp.price }} $</div>
                             <a href="#" class="btn btn-secondary">
                                 Add to cart
                             </a>
+                        </div>
+
                     </div>
+ 
+                    <div *ngIf="items?.length == 0" role="alert"> 
+                        Oops! We could not find any mathcing items.
+                    </div>
+                    
                 </div>
             </div>
         </div>
