@@ -20,7 +20,6 @@ export class ItemCategoryBarComponent implements OnInit {
 
     this.itemService.getItemCategoryList().subscribe(
       data => {
-        console.log(JSON.stringify(data))
         this.itemCategoryList = data
       }
     )

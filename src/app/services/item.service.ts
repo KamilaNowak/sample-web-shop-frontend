@@ -14,21 +14,20 @@ export class ItemService {
 
   private url = 'http://localhost:8080/items'
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {}
 
-   }
+  getItemList(categoryId: number): Observable<Item[]> {
 
-  getItemList(categoryId: number): Observable<Item[]>{
-
-     const filterUrl = this.url + `/search/findByItemCategory_Id?id=${categoryId}`
-     return this.processItemsList(filterUrl)
+    const filterUrl = this.url + `/search/findByItemCategory_Id?id=${categoryId}`
+    return this.processItemsList(filterUrl)
   }
 
-  getItemById(itemId:number):Observable<Item>{
-    
-  
-    const itemUrl = this.url + `/search/findById?id=${itemId}`
-    return this.httpClient.get<Item>(itemUrl)
+  getItemById(itemId: number): Observable<Item> {
+
+    const itemUrl = this.url + `/` + itemId
+    console.log(JSON.stringify(this.httpClient.get<Item>(itemUrl)))
+
+    return this.httpClient.get<Item>(itemUrl);
   }
 
   searchItems(query: string): Observable<Item[]> {
@@ -36,33 +35,45 @@ export class ItemService {
     const searchUrl = this.url + `/search/findByTitleContaining?query=${query}`
     return this.processItemsList(searchUrl)
   }
+  searchItemsWithPagination(query: string, page: number, size: number): Observable<UnwrapEmbeddedItem> {
+    const searchUrl = this.url + `/search/findByTitleContaining?query=${query}`
+      + `&page=${page}` + `&size=${size}`
+    return this.httpClient.get<UnwrapEmbeddedItem>(searchUrl)
+  }
 
-  processItemsList(url: string): Observable<Item[]>{
+  processItemsList(url: string): Observable<Item[]> {
     return this.httpClient
       .get<UnwrapEmbeddedItem>(url)
-      .pipe( map (res => res._embedded.items)
+      .pipe(map(res => res._embedded.items)
       );
   }
 
-  getItemCategoryList():Observable<ItemCategory[]>{
+  getItemCategoryList(): Observable<ItemCategory[]> {
     const categoryUrl = `http://localhost:8080/item-category`
-    
-    console.log("d " + this.httpClient
-      .get<UnwrapEmbeddedCategory>(categoryUrl)
-      .pipe( map( res => res._embedded.itemCategory)))
+
     return this.httpClient
       .get<UnwrapEmbeddedCategory>(categoryUrl)
-      .pipe( map( res => res._embedded.itemCategory))
-  
+      .pipe(map(res => res._embedded.itemCategory))
   }
 
-}
-interface UnwrapEmbeddedItem{
-  _embedded: {
-    items: Item[];
+  getItemsWithPagination(categoryId: number, page: number, size: number): Observable<UnwrapEmbeddedItem> {
+    const paginationUrl = `${this.url}/search/findByItemCategory_Id?id=` + `${categoryId}`
+      + `&page=${page}` + `&size=${size}`
+    return this.httpClient.get<UnwrapEmbeddedItem>(paginationUrl)
   }
 }
-interface UnwrapEmbeddedCategory{
+interface UnwrapEmbeddedItem {
+  _embedded: {
+    items: Item[];
+  },
+  page: {
+    size: number;
+    totalElements: number,
+    totalPages: number,
+    number: number
+  }
+}
+interface UnwrapEmbeddedCategory {
   _embedded: {
     itemCategory: ItemCategory[];
   }

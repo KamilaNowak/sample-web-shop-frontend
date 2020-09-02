@@ -174,3 +174,9 @@ footer ul li{
     font-weight: bold;
     font-family: serif;
 }
+.item-detail-wrapper{
+    margin-top:100px
+}
+.item-detail-img{
+    width:100%;
+}

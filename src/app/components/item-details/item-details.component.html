@@ -1,6 +1,25 @@
-
-<div class="main-section">
-    <div class="container-fluid">
-        <p></p>
+<div class="item-detail-wrapper">
+    <div class="container-fluid ml-6">
+        <img class ="item-detail-img" src="{{ item.imageUrl }}" class="img-responsive">    
+        <br>
+        <div class="item-small-details" >
+            <p>Serial Number : {{item.serialNumber}}</p>
+            <p>Items Left: {{item.availability}}</p>
+        </div>   
+        <div class="">
+            <h2>Description</h2>
+            {{item.description}}
+        </div>  
+        <hr>
+        <div class="price-label">
+            <h1>{{item.price | currency:'EUR'}}</h1>
+        </div>    
+        
+        <a href="#" class="btn btn-secondary">
+            Add to cart
+        </a>
+        
+        <br>
+        <p><a routerLink="/items" class="mt-5"> Return to items</a></p>
     </div>
-</div> 
+</div>

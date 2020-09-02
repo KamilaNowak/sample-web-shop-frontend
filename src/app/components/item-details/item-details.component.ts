@@ -10,7 +10,7 @@ import {ItemService} from '../../services/item.service'
 })
 export class ItemDetailsComponent implements OnInit {
 
-  item:Item;
+  item:Item = new Item();
 
   constructor(private itemService: ItemService, private route: ActivatedRoute) { }
 
@@ -24,11 +24,11 @@ export class ItemDetailsComponent implements OnInit {
 
   getItemDetails(){
     const itemId: number = +this.route.snapshot.paramMap.get('id')
-
+  
     this.itemService.getItemById(itemId).subscribe(
       json => { this.item =json
+        console.log(JSON.stringify(this.item))
       }
     )
   }
-
 }

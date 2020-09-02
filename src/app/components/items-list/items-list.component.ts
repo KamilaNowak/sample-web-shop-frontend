@@ -11,55 +11,84 @@ import { ActivatedRoute } from '@angular/router';
 export class ItemsListComponent implements OnInit {
 
   items: Item[];
-  categoryId:number;
+  categoryId: number = 1;
+  prevCategoryId: number = 1;
   isSearchingActive: boolean
+  prevSearchQuery: string = null;
+
+  /* pagination */
+  pageNumber: number = 1;
+  pageSize: number = 10;
+  totalElements: number = 0;
 
   constructor(private itemService: ItemService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.route)
-    this.route.paramMap.subscribe(() =>{
-    this.getItemsList();
-  });
-}
-  routerOnActivate(): void{
-    this.route.paramMap.subscribe(() =>{
+    this.route.paramMap.subscribe(() => {
       this.getItemsList();
     });
-  } 
+  }
+  // routerOnActivate(): void{
+  //   this.route.paramMap.subscribe(() =>{
+  //     this.getItemsList();
+  //   });
+  // } 
   getItemsList() {
 
     this.isSearchingActive = this.route.snapshot.paramMap.has('query')
-    
-    const query:string = this.route.snapshot.paramMap.get('query')
 
-    if(this.isSearchingActive){
+    const query: string = this.route.snapshot.paramMap.get('query')
+
+    if (this.isSearchingActive) {
       this.getSearchedItemsList()
     }
-    else{
+    else {
       this.retrieveItemsList()
     }
   }
 
-  retrieveItemsList(){
-    const categoryIdValue : boolean = this.route.snapshot.paramMap.has('id')
+  retrieveItemsList() {
+    const categoryIdValue: boolean = this.route.snapshot.paramMap.has('id')
 
-    if(categoryIdValue) {
+    if (categoryIdValue) {
       this.categoryId = +this.route.snapshot.paramMap.get('id');
     }
     else {
       this.categoryId = 1;
     }
-    this.itemService
-        .getItemList(this.categoryId)
-        .subscribe(response => {
-            this.items = response
-        })
-  }
-  getSearchedItemsList(){
 
-    const query:string = this.route.snapshot.paramMap.get('query')
-    this.itemService.searchItems(query)
-      .subscribe( data => this.items=data)
+    if (this.prevCategoryId != this.categoryId) {
+      this.pageNumber = 1;
+    }
+
+    this.itemService.getItemsWithPagination(this.categoryId, (this.pageNumber - 1), this.pageSize)
+      .subscribe(this.retrieveItemsListResponseWithPagiantion())
+  }
+ 
+  getSearchedItemsList() {
+    const query: string = this.route.snapshot.paramMap.get('query')
+
+    if (this.prevSearchQuery != query) {
+      this.pageNumber = 1;
+    }
+    this.prevSearchQuery = query
+    this.itemService.searchItemsWithPagination(query, this.pageNumber - 1, this.pageSize)
+      .subscribe(this.retrieveItemsListResponseWithPagiantion())
+    // this.itemService.searchItems(query)
+    //   .subscribe(data => this.items = data)
+  }
+  
+  retrieveItemsListResponseWithPagiantion() {
+    return response => {
+      this.items = response._embedded.items;
+      this.totalElements = response.page.totalElements;
+      this.pageNumber = response.page.pageNumber + 1;
+      this.pageSize = response.page.pageSize;
+    }
+  }
+  setPageSize(size: number) {
+    this.pageNumber = 1
+    this.pageSize = size;
+    this.getItemsList();
   }
 }

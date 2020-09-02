@@ -1,5 +1,5 @@
 export class Item {
-
+    id:number;
     serialNumber: string;
     isActive: boolean;
     title: string;

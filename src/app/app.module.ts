@@ -11,12 +11,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ItemCategoryBarComponent } from './components/item-category-bar/item-category-bar.component';
 import { SearchComponent } from './components/search/search.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component'
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 const routes : Routes= [
   {path: 'search/:query', component: ItemsListComponent},
+  {path: 'items/:id', component: ItemDetailsComponent},
   {path: 'category/:id', component: ItemsListComponent},
   {path: 'category', component: ItemsListComponent},
-  {path: 'items/:id', component: ItemDetailsComponent},
   {path: 'items', component: ItemsListComponent},
   {path: '', redirectTo:'/items', pathMatch:'full'},
   {path: '**', redirectTo:'/items', pathMatch:'full'},
@@ -36,7 +36,8 @@ const routes : Routes= [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    NgbModule
   ],
   exports: [
     RouterModule
