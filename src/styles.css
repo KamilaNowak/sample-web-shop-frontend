@@ -105,7 +105,8 @@ input.header-input.header-input-xl{
     background:#8d205c
 }
 .cart-sign{
-    display:block
+    color:#8d205c; 
+    margin-left: 0.5cm
 }
 .total-sign{
     background:#8d205c;

@@ -12,6 +12,7 @@ import { ItemCategoryBarComponent } from './components/item-category-bar/item-ca
 import { SearchComponent } from './components/search/search.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CartBadgeComponent } from './components/cart-badge/cart-badge.component';
 const routes : Routes= [
   {path: 'search/:query', component: ItemsListComponent},
   {path: 'items/:id', component: ItemDetailsComponent},
@@ -29,7 +30,8 @@ const routes : Routes= [
     ItemsListComponent,
     ItemCategoryBarComponent,
     SearchComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    CartBadgeComponent
   ],
   imports: [
     BrowserModule,

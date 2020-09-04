@@ -1,52 +1,47 @@
-    <!doctype html>
-    <html lang="en">    
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Shople</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" media="all">
-        </head>
-    <body>
-       <div class="page-wrapper">
-           <div class="menu-bar d-none d-lg-block">
-               <div class="logo-bar">
-                   <a href="home.html">
-                       <img src="../assets/images/logo-2.png" style="width: 40%;" alt="Shople" class="img-responsive"/>
-                   </a>
-               </div>
-               
-                <app-item-category-bar></app-item-category-bar>
-            
-           </div>
-        <div class="page-container">
-                <header class="header">
-                    <div class="header-content section-content-p35">
-                        <div class="container-fluid">
-                            <div class="header-wrapper">
-                                
-                            <!-- search component -->
-                          <app-search></app-search>
+<!doctype html>
+<html lang="en">
 
-                                <div class="cart-sign d-n">
-                                    <a href="cart-details.html">
-                                        <div class="total-sign">
-                                            PRICE 
-                                            <span>COUNT</span>
-                                        </div>
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Shople</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="menu-bar d-none d-lg-block">
+            <div class="logo-bar">
+                <a href="home.html">
+                    <img src="../assets/images/logo-2.png" style="width: 40%;" alt="Shople" class="img-responsive" />
+                </a>
+            </div>
+
+            <app-item-category-bar></app-item-category-bar>
+
+        </div>
+        <div class="page-container">
+            <header class="header">
+                <div class="header-content section-content-p35">
+                    <div class="container-fluid">
+                        <div class="header-wrapper">
+
+                            <!-- search component -->
+                            <app-search></app-search>
+                            <!-- cart sign -->
+                            <app-cart-badge></app-cart-badge>
+
                         </div>
                     </div>
-                </header>
-               
-            <router-outlet></router-outlet>  
-        </div> 
-       </div>
-       <footer>
+                </div>
+            </header>
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <footer>
         <ul>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact </a></li>
@@ -55,8 +50,6 @@
             <li><a href="#">Regulations</a></li>
         </ul>
     </footer>
-    </body> 
+</body>
 
-    </html>
-
-
+</html>

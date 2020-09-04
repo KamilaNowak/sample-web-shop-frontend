@@ -15,9 +15,9 @@
             <h1>{{item.price | currency:'EUR'}}</h1>
         </div>    
         
-        <a href="#" class="btn btn-secondary">
+        <button (click)="addItemToCart(item)" class="btn btn-secondary">
             Add to cart
-        </a>
+        </button>
         
         <br>
         <p><a routerLink="/items" class="mt-5"> Return to items</a></p>

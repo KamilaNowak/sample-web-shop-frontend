@@ -14,9 +14,9 @@
                             </a>
                             <h2>{{temp.description}}</h2>
                             <div class="price-label"> {{temp.price }} $</div>
-                            <a href="#" class="btn btn-secondary">
+                            <button (click)="addItemToCart(temp)" class="btn btn-secondary">
                                 Add to cart
-                            </a>
+                            </button>
                         </div>
 
                     </div>

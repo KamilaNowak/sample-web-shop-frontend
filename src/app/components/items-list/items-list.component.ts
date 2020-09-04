@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item.service'
 import { Item } from 'src/app/utils/item';
+import { CartItem } from '../../utils/CartItem'
+import { CartService } from '../../services/cart.service'
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -21,7 +23,7 @@ export class ItemsListComponent implements OnInit {
   pageSize: number = 10;
   totalElements: number = 0;
 
-  constructor(private itemService: ItemService, private route: ActivatedRoute) { }
+  constructor(private itemService: ItemService, private cartService: CartService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -64,7 +66,7 @@ export class ItemsListComponent implements OnInit {
     this.itemService.getItemsWithPagination(this.categoryId, (this.pageNumber - 1), this.pageSize)
       .subscribe(this.retrieveItemsListResponseWithPagiantion())
   }
- 
+
   getSearchedItemsList() {
     const query: string = this.route.snapshot.paramMap.get('query')
 
@@ -77,7 +79,12 @@ export class ItemsListComponent implements OnInit {
     // this.itemService.searchItems(query)
     //   .subscribe(data => this.items = data)
   }
-  
+  addItemToCart(item: Item) {
+
+    const cartItem = new CartItem(item)
+    this.cartService.addItem(cartItem);
+
+  }
   retrieveItemsListResponseWithPagiantion() {
     return response => {
       this.items = response._embedded.items;
