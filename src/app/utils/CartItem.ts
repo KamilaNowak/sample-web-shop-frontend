@@ -13,7 +13,7 @@ export class CartItem{
         this.serialNumber=item.serialNumber
         this.title=item.title
         this.price= item.price
-        this.imageUrl= this.imageUrl
+        this.imageUrl= item.imageUrl
         this.quantity=1;
     }
 }

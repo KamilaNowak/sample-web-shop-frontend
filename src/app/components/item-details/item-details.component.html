@@ -15,11 +15,14 @@
             <h1>{{item.price | currency:'EUR'}}</h1>
         </div>    
         
-        <button (click)="addItemToCart(item)" class="btn btn-secondary">
-            Add to cart
+        <button (click)="addItemToCart(item)" class="btn btn-success">
+            Add to cart  <i class="fas fa-cart-plus"></i>
         </button>
         
         <br>
-        <p><a routerLink="/items" class="mt-5"> Return to items</a></p>
+        <div class="" style="margin-top: 20px;">
+            <button class="btn btn-secondary" routerLink="/items"> <i class="fas fa-reply"></i>   Return to items</button>
+        </div>
+
     </div>
 </div>

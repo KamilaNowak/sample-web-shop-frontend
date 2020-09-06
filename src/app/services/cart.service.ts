@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CartItem } from "../utils/CartItem"
+import { CartItem } from "../utils/cartitem"
 import { Subject } from 'rxjs';
+import { Item } from '../utils/item';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  cartItemsList: CartItem[] = [];
+  cartItemsList: CartItem[] =new Array();
   total: Subject<number> = new Subject<number>();
   quantity: Subject<number> = new Subject<number>();
 
@@ -18,22 +19,49 @@ export class CartService {
     let existingItem: CartItem = undefined;
 
     if (this.cartItemsList.length > 0) {
-      this.cartItemsList.find( temp =>{
-        temp.id === cartItem.id
-      })
+      for (let tempItem of this.cartItemsList) {
+        if (tempItem.id === cartItem.id) {
+          existingItem = tempItem
+          break;
+        }
+      }
       isItemExisting = (existingItem != undefined);
     }
 
     if (isItemExisting) {
-      existingItem.quantity++;
+      for (let tempItem of this.cartItemsList) {
+        if (tempItem.id === existingItem.id)
+          tempItem.quantity++
+      }
     }
     else {
       this.cartItemsList.push(cartItem)
     }
-
     this.updateCartTotal();
   }
-
+  decrementItem(cartItem: CartItem) {
+    if (cartItem.quantity === 1) {
+      this.removeItemFromCart(cartItem)
+    }
+    else {
+      cartItem.quantity--;
+      this.updateCartTotal()
+    }
+  }
+  removeItemFromCart(cartItem: CartItem) {
+    let id: number = -1
+    for (let tempItem of this.cartItemsList) {
+      if (tempItem.id === cartItem.id) {
+        id = this.cartItemsList.indexOf(tempItem)
+      }
+    }
+  
+    if (id > -1 && this.cartItemsList.length > 0) {
+      //remove 1 item with the given id
+         this.cartItemsList.splice(id)
+    }
+    this.updateCartTotal();
+  }
   updateCartTotal() {
 
     let totalPrice: number = 0;
@@ -48,16 +76,5 @@ export class CartService {
     // bind values beetween components
     this.total.next(totalPrice);
     this.quantity.next(totalQuantity);
-
-    this.logVal(totalPrice,totalQuantity)
-  }
-  logVal(tp:number, tq:number){
-    
-    for(let temp of this.cartItemsList){
-      const tp = temp.quantity* temp.price
-      console.log("price: "+ tp)
-      console.log(`${temp.title} : ${temp.price} x ${temp.quantity}`)
-    }
-    console.log("tp: "+tp+" tq: "+tq)
   }
 }

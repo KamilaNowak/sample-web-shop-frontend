@@ -25,8 +25,6 @@ export class ItemService {
   getItemById(itemId: number): Observable<Item> {
 
     const itemUrl = this.url + `/` + itemId
-    console.log(JSON.stringify(this.httpClient.get<Item>(itemUrl)))
-
     return this.httpClient.get<Item>(itemUrl);
   }
 

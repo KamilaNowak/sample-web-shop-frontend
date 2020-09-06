@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/utils/item';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../../services/item.service'
-import { CartItem } from '../../utils/CartItem'
+import { CartItem } from '../../utils/cartitem'
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -30,7 +30,6 @@ export class ItemDetailsComponent implements OnInit {
     this.itemService.getItemById(itemId).subscribe(
       json => {
         this.item = json
-        console.log(JSON.stringify(this.item))
       }
     )
   }

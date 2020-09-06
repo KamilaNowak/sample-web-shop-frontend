@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="section-text">
+        <div class="container-fluid">
+
+            <div *ngIf="cartItemsList?.length>0; 
+                then notEmpty 
+                else isEmpty">
+            </div>
+
+            <ng-template #notEmpty>
+                <div class="" role="alert">
+                    <table class="table tabled-bordered" style="margin-top:10px;">
+                        <tr class="cart-table-header">
+                            <th width="10%"></th>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr *ngFor="let temp of cartItemsList">
+                            <td> <img src="{{ temp.imageUrl}}" class="img-cart" /> </td>
+                            <td>
+                                <p>{{temp.serialNumber}}</p>
+                                <h4>{{temp.title}}</h4>
+                            </td>
+                            <td>
+                                {{temp.price}}
+                            </td>
+                            <td>
+                                <button class="button-cart" (click)="decrementItemQuantity(temp)">
+                                    <i class="fas fa-minus-circle"></i>
+                                </button>
+                                {{temp.quantity}}
+                                <button class="button-cart" (click)="incrementItemQuantity(temp)">
+                                    <i class="fas fa-plus-circle"></i>
+                                </button>
+                            </td>
+                            <td>
+                                {{temp.quantity *temp.price |currency:'EUR'}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>
+                                <h1> <span class="">
+                                        <p>Total price: {{total |currency:'EUR'}}</p>
+                                        <p>Items quantity: {{quantity}}</p>
+                                    </span></h1>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </ng-template>
+            <ng-template #isEmpty>
+                <div class="alert alert-danger" role="alert">
+                    <h2><a> Your cart is empty </a> <i class="far fa-frown"></i></h2>
+                </div>
+            </ng-template>
+
+        </div>
+    </div>
+</div>

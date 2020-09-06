@@ -6,21 +6,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsListComponent } from './components/items-list/items-list.component';
 import { HttpClientModule } from '@angular/common/http' //for HTTP Client
 import { ItemService } from '../app/services/item.service'
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table'
 import { Routes, RouterModule } from '@angular/router';
 import { ItemCategoryBarComponent } from './components/item-category-bar/item-category-bar.component';
 import { SearchComponent } from './components/search/search.component';
 import { ItemDetailsComponent } from './components/item-details/item-details.component'
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartBadgeComponent } from './components/cart-badge/cart-badge.component';
-const routes : Routes= [
-  {path: 'search/:query', component: ItemsListComponent},
-  {path: 'items/:id', component: ItemDetailsComponent},
-  {path: 'category/:id', component: ItemsListComponent},
-  {path: 'category', component: ItemsListComponent},
-  {path: 'items', component: ItemsListComponent},
-  {path: '', redirectTo:'/items', pathMatch:'full'},
-  {path: '**', redirectTo:'/items', pathMatch:'full'},
+import { CartComponent } from './components/cart/cart.component';
+const routes: Routes = [
+  { path: 'search/:query', component: ItemsListComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'items/:id', component: ItemDetailsComponent },
+  { path: 'category/:id', component: ItemsListComponent },
+  { path: 'category', component: ItemsListComponent },
+  { path: 'items', component: ItemsListComponent },
+  { path: '', redirectTo: '/items', pathMatch: 'full' },
+  { path: '**', redirectTo: '/items', pathMatch: 'full' },
 
 ]
 
@@ -31,7 +33,8 @@ const routes : Routes= [
     ItemCategoryBarComponent,
     SearchComponent,
     ItemDetailsComponent,
-    CartBadgeComponent
+    CartBadgeComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
