@@ -1,0 +1,144 @@
+
+<div class="main-content">
+    <div class="section-text">
+        <div class="container-fluid">
+            <form [formGroup]="purchaseFormModule" (ngSubmit)="onSubmit()">
+                <div formGroupName="customer-form">
+                    <h3>Personal Informations</h3>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input">
+                                <input class="input-purchase" formControlName="name" type="text" size="50"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Surname</label>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input">
+                                <input class="input-purchase" formControlName="surname" type="text" size="50"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>E-mail</label>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input">
+                                <input  class="input-purchase" formControlName="email" type="text" size="50"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Phone Number</label>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input">
+                                <input class="input-purchase" formControlName="phoneNumber" type="text" size="50"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="shipping-form">
+                    <h3>Shipping</h3>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Postal Code</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="postalCode" type="text" size="50"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Country</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="country" type="text" size="50"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>City</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="city" type="text" size="50"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Street</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="street" type="text" size="50"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Building</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="building" type="text" size="50"/>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="payment-form">
+                    <h3>Payment</h3>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Card Type</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="cardType" type="text" size="50"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Card Number</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="cardNumber" type="text" size="50"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2 ">
+                            <label>Security Code</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="securityCode" type="text" size="50"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            <label>Expiration Date</label>
+                        </div>
+                        <div class="input">
+                            <input class="input-purchase" formControlName="expirationDate" type="date" style="width:300px"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10">
+                        <button type="submit" class="submit-button"> Submit <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -207,3 +207,19 @@ footer ul li{
     border:none;
     background: none;
 }
+.purchase-button{
+    border-radius: 40px;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.submit-button{
+    border-radius:35px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: rgb(194, 238, 203);
+}
+.input-purchase{
+    border-radius: 30px;
+    border-width:1px;
+}

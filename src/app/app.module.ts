@@ -14,6 +14,8 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartBadgeComponent } from './components/cart-badge/cart-badge.component';
 import { CartComponent } from './components/cart/cart.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
+import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   { path: 'search/:query', component: ItemsListComponent },
   { path: 'cart', component: CartComponent },
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'category/:id', component: ItemsListComponent },
   { path: 'category', component: ItemsListComponent },
   { path: 'items', component: ItemsListComponent },
+  { path: 'purchase', component: PurchaseComponent },
   { path: '', redirectTo: '/items', pathMatch: 'full' },
   { path: '**', redirectTo: '/items', pathMatch: 'full' },
 
@@ -34,7 +37,8 @@ const routes: Routes = [
     SearchComponent,
     ItemDetailsComponent,
     CartBadgeComponent,
-    CartComponent
+    CartComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule
