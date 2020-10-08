@@ -1,0 +1,43 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, of, Subject } from 'rxjs';
+import { Customer } from '../utils/customer';
+import { Shipping } from '../utils/shipping';
+import { Payment } from '../utils/payment';
+import { Observable } from 'rxjs';
+import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FormService {
+
+  customerData = new BehaviorSubject<Customer>(null);
+  paymentDat  = new BehaviorSubject<Payment>(new Payment());
+  shippingData = new BehaviorSubject<Shipping>(new Shipping);
+
+  constructor() { }
+
+  setCustomerData(customerForm: FormGroup) {
+    let customer = new Customer()
+    customer.name=customerForm.get('customer.name').value
+    customer.name = customerForm.get('customer.name').value
+    customer.surname = customerForm.get('customer.surname').value
+    customer.email = customerForm.get('customer.email').value
+    customer.phoneNumber = customerForm.get('customer.phoneNumber').value
+    this.customerData.next(customer);
+  }
+
+  setShippingData(shippingForm: FormGroup) {
+    let shipping = new Shipping()
+    shipping.building = shippingForm.get("shipping.building").value
+    shipping.postalCode = shippingForm.get("shipping.postalCode").value
+    shipping.country = shippingForm.get("shipping.country").value
+    shipping.city = shippingForm.get("shipping.city").value
+    shipping.street = shippingForm.get("shipping.street").value
+    this.shippingData.next(shipping)
+  }
+  updateSummary() {
+
+  }
+}

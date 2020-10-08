@@ -16,6 +16,9 @@ import { CartBadgeComponent } from './components/cart-badge/cart-badge.component
 import { CartComponent } from './components/cart/cart.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './components/payment/payment.component';
+import { SummaryComponent } from './components/summary/summary.component';
+
 const routes: Routes = [
   { path: 'search/:query', component: ItemsListComponent },
   { path: 'cart', component: CartComponent },
@@ -24,6 +27,8 @@ const routes: Routes = [
   { path: 'category', component: ItemsListComponent },
   { path: 'items', component: ItemsListComponent },
   { path: 'purchase', component: PurchaseComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'summary', component: SummaryComponent },
   { path: '', redirectTo: '/items', pathMatch: 'full' },
   { path: '**', redirectTo: '/items', pathMatch: 'full' },
 
@@ -38,7 +43,10 @@ const routes: Routes = [
     ItemDetailsComponent,
     CartBadgeComponent,
     CartComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    PaymentComponent,
+    SummaryComponent,
+
   ],
   imports: [
     BrowserModule,

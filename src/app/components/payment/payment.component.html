@@ -1,0 +1,56 @@
+<div class="main-content">
+    <div class="section-text">
+        <div class="container-fluid">
+            <form [formGroup]="paymentFormModule" (ngSubmit)="onSubmit()">
+                <div formGroupName="payment">
+                  
+                        <h3>Payment</h3>
+                        <div class="row mt-2">
+                            <div class="col-md-2">
+                                <label>Card Type</label>
+                            </div>
+                            <div class="input">
+                                <input class="input-purchase" formControlName="cardType" type="text" size="50" />
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-2">
+                                <label>Card Number</label>
+                            </div>
+                            <div class="input">
+                                <input class="input-purchase" formControlName="cardNumber" type="text" size="50" />
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-2 ">
+                                <label>Security Code</label>
+                            </div>
+                            <div class="input">
+                                <input class="input-purchase" formControlName="securityCode" type="text" size="50" />
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-2">
+                                <label>Expiration Date</label>
+                            </div>
+                            <div class="input">
+                                <input class="input-purchase" formControlName="expirationDate" type="date"
+                                    style="width:300px" />
+                            </div>
+                        </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <button routerLink="/purchase" class="submit-button"> Go Back </button>
+                    </div>
+                    <div class="col-md-10">
+                        <button type="submit" class="submit-button">Summary</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
