@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from "../utils/cartitem"
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Item } from '../utils/item';
+import { ArrayType } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  cartItemsList: CartItem[] =new Array();
+  cartItemsList: CartItem[] = new Array();
+  totalCartItemsList: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>(new Array());
   total: Subject<number> = new Subject<number>();
   quantity: Subject<number> = new Subject<number>();
 
@@ -71,8 +73,10 @@ export class CartService {
 
       totalPrice += tempItem.quantity * tempItem.price;
       totalQuantity += tempItem.quantity;
-    }
 
+      this.totalCartItemsList.value.push(tempItem)
+    }
+    
     // bind values beetween components
     this.total.next(totalPrice);
     this.quantity.next(totalQuantity);
