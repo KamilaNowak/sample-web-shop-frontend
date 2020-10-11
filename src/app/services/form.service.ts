@@ -13,7 +13,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 export class FormService {
 
   customerData = new BehaviorSubject<Customer>(null);
-  paymentDat  = new BehaviorSubject<Payment>(new Payment());
+  paymentData  = new BehaviorSubject<Payment>(new Payment());
   shippingData = new BehaviorSubject<Shipping>(new Shipping);
 
   constructor() { }
@@ -37,6 +37,15 @@ export class FormService {
     shipping.street = shippingForm.get("shipping.street").value
     this.shippingData.next(shipping)
   }
+  
+  setPaymentData(paymentForm: FormGroup){
+    let payment = new Payment();
+    payment.cardNumber = paymentForm.get("cardNumber").value;
+    payment.cardType = paymentForm.get("cardType").value;
+    payment.expirationDate = paymentForm.get("expirationDate").value;
+    payment.securityCode = paymentForm.get("securityCode").value;
+    this.paymentData.next(payment);
+  }  
   updateSummary() {
 
   }

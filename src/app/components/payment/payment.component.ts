@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
-
+import {Router} from "@angular/router"
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-payment',
@@ -10,7 +11,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 export class PaymentComponent implements OnInit {
 
   paymentFormModule: FormGroup
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private formService: FormService) { }
 
   ngOnInit(): void {
 
@@ -20,12 +21,17 @@ export class PaymentComponent implements OnInit {
         cardNumber: [''],
         securityCode: [''],
         expirationDate: ['']
-      })
+      }),
     })
   }
 
   onSubmit() {
-    console.log("Submit")
+    this.setPaymentDataFromService(this.paymentFormModule)
+    this.router.navigateByUrl("/summary")
+  }
+
+  setPaymentDataFromService(paymentForm: FormGroup){
+    this.formService.setPaymentData(paymentForm);
   }
 
 }

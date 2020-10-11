@@ -26,6 +26,10 @@ export class SummaryComponent implements OnInit {
    this.formService.shippingData.subscribe(res =>{
      this.shippingData = res
    })
+
+   this.formService.paymentData.subscribe(res =>{ 
+     this.paymentData = res
+   })
   }
   ngOnInit(): void {
     this.updatePurchaseDetails()

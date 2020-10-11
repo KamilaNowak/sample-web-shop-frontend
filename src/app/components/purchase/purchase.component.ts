@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
-import { Customer } from '../../utils/customer';
-import { Shipping } from '../../utils/shipping';
-import { Payment } from '../../utils/payment';
 import { FormService } from '../../services/form.service'
 import {Router} from "@angular/router"
 
@@ -18,10 +15,6 @@ export class PurchaseComponent implements OnInit {
 
   totalPrice: number = 0;
   totalQuantity: number = 0;
-
-  customerData: Customer = new Customer();
-  paymentData: Payment = new Payment();
-  shippingData: Shipping = new Shipping();
 
   ngOnInit(): void {
 
@@ -44,7 +37,7 @@ export class PurchaseComponent implements OnInit {
   onSubmit() {
     this.setCustomerDataFromService(this.purchaseFormModule)
     this.setShippingDataFromService(this.purchaseFormModule)
-    this.router.navigateByUrl("/summary")
+    this.router.navigateByUrl("/payment")
   }
 
 
