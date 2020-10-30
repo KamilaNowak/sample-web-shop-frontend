@@ -31,6 +31,7 @@ export class SummaryComponent implements OnInit {
     })
 
     this.formService.paymentData.subscribe(res => {
+      console.log(res.cardNumber+" "+ res.securityCode)
       this.paymentData = res
     })
   }
@@ -42,5 +43,6 @@ export class SummaryComponent implements OnInit {
   }
   ngOnInit(): void {
     this.updatePurchaseDetails()
+    this.updateCartItemList()
   }
 }

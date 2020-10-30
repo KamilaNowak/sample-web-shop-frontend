@@ -13,7 +13,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 export class FormService {
 
   customerData = new BehaviorSubject<Customer>(null);
-  paymentData  = new BehaviorSubject<Payment>(new Payment());
+  paymentData  = new BehaviorSubject<Payment>(null);
   shippingData = new BehaviorSubject<Shipping>(new Shipping);
 
   constructor() { }
